@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeInvest - Smart Investment Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentUser = userStorage.getCurrentUser();
+        if (!currentUser) {
+            window.location.href = 'signin.html';
+            return;
+        }
+        
+        // Update balance
+        const userBalance = userStorage.getUserBalance(currentUser.email);
+        document.getElementById('dashboard-balance').textContent = userBalance.toFixed(2);
+        
+        // Load current investments
+        const investments = userStorage.getUserInvestments(currentUser.email);
+        const investmentsContainer = document.getElementById('current-investments');
+        
+        if (investments.length === 0) {
+            investmentsContainer.innerHTML = `
+                <div style="text-align: center; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <i class="fas fa-chart-line" style="font-size: 60px; color: #ddd; margin-bottom: 20px;"></i>
+                    <h3>No Active Investments</h3>
+                    <p>You don't have any active investments yet. Start your investment journey today!</p>
+                    <a href="products.html" class="btn" style="margin-top: 15px;">Browse Investments</a>
+                </div>
+            `;
+        } else {
+            investmentsContainer.innerHTML = '<h3>Active Investments</h3>';
+            
+            investments.forEach(investment => {
+                const product = products[investment.product];
+                const plan = plans[investment.plan];
+                const returnAmount = investment.amount * (plan.return / 100);
+                const totalAmount = parseFloat(investment.amount) + returnAmount;
+                const maturityDate = getMaturityDate(investment.date, plan.name);
+                
+                const investmentCard = document.createElement('div');
+                investmentCard.className = 'product-card';
+                investmentCard.innerHTML = `
+                    <div class="product-icon">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>${product.name}</h3>
+                        <p><strong>Plan:</strong> ${plan.name} Plan</p>
+                        <p><strong>Investment:</strong> $${parseFloat(investment.amount).toFixed(2)}</p>
+                        <p><strong>Expected Return:</strong> $${returnAmount.toFixed(2)} (${plan.return}%)</p>
+                        <p><strong>Total Return:</strong> $${totalAmount.toFixed(2)}</p>
+                        <p><strong>Maturity Date:</strong> ${maturityDate}</p>
+                        <p style="color: #666; font-size: 14px;">Investment ID: ${investment.confirmation}</p>
+                    </div>
+                `;
+                investmentsContainer.appendChild(investmentCard);
+            });
+        }
+    });
+    
+    function getMaturityDate(investmentDate, planName) {
+        const date = new Date(investmentDate);
+        let months = 1;
+        
+        if (planName.includes('2 Month')) months = 2;
+        if (planName.includes('3 Month')) months = 3;
+        
+        date.setMonth(date.getMonth() + months);
+        return date.toLocaleDateString();
+    }
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                PrimeInvest
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="auth-links">
+                        <!-- Will be populated by JavaScript -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Smart Investments for a Brighter Future</h1>
+            <p>Join thousands of investors who trust PrimeInvest for secure and profitable investment opportunities in sustainable resources.</p>
+            <a href="products.html" class="btn btn-accent">Explore Investments</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Our Investment Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Gold Mining</h3>
+                        <p>Invest in our carefully selected gold mining operations with proven reserves and sustainable extraction methods.</p>
+                        <a href="product-detail.html?product=gold" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Coal Mining</h3>
+                        <p>Strategic investments in coal mining with focus on efficiency and environmental responsibility.</p>
+                        <a href="product-detail.html?product=coal" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Biogas Production</h3>
+                        <p>Support renewable energy through investments in biogas production from organic waste materials.</p>
+                        <a href="product-detail.html?product=biogas" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans">
+        <div class="container">
+            <h2 class="section-title">Investment Plans</h2>
+            <div class="plan-cards">
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>1 Month Plan</h3>
+                    <div class="plan-price">8% Return</div>
+                    <ul class="plan-features">
+                        <li>Minimum Investment: $500</li>
+                        <li>Monthly Payouts</li>
+                        <li>24/7 Account Access</li>
+                        <li>Basic Support</li>
+                    </ul>
+                    <a href="sales-funnel.html?plan=1" class="btn">Get Started</a>
+                </div>
+                <div class="plan-card featured">
+                    <div class="plan-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>2 Month Plan</h3>
+                    <div class="plan-price">18% Return</div>
+                    <ul class="plan-features">
+                        <li>Minimum Investment: $1,000</li>
+                        <li>Bi-monthly Payouts</li>
+                        <li>24/7 Account Access</li>
+                        <li>Priority Support</li>
+                        <li>Portfolio Analysis</li>
+                    </ul>
+                    <a href="sales-funnel.html?plan=2" class="btn">Get Started</a>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <h3>3 Month Plan</h3>
+                    <div class="plan-price">30% Return</div>
+                    <ul class="plan-features">
+                        <li>Minimum Investment: $2,500</li>
+                        <li>Quarterly Payouts</li>
+                        <li>24/7 Account Access</li>
+                        <li>Premium Support</li>
+                        <li>Portfolio Analysis</li>
+                        <li>Dedicated Advisor</li>
+                    </ul>
+                    <a href="sales-funnel.html?plan=3" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Investors Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I've been investing with PrimeInvest for over a year now and the returns have been consistently impressive. The team is professional and responsive."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Thompson</h4>
+                            <p>Gold Mining Investor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The biogas production investment has not only provided good returns but also aligns with my values of supporting renewable energy. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Biogas Investor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a first-time investor, I was nervous about where to put my money. PrimeInvest made the process simple and the 2-month plan has exceeded my expectations."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <p>Coal Mining Investor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Frame -->
+    <section class="ad-frame">
+        <div class="container ad-content">
+            <h2>Limited Time Offer: Get 5% Bonus on All New Investments!</h2>
+            <p>Offer valid until the end of this month. Start your investment journey today and maximize your returns.</p>
+            <a href="signup.html" class="btn">Claim Your Bonus</a>
+        </div>
+    </section>
+<!-- Add this section to home.html after the ad-frame section -->
+<div class="container">
+    <div class="dashboard-section" style="margin: 40px 0;">
+        <h2 class="section-title">Your Investments</h2>
+        
+        <div class="balance-card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 25px; border-radius: 8px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3>Account Balance</h3>
+                <p style="font-size: 36px; font-weight: bold; margin: 10px 0;">$<span id="dashboard-balance">0.00</span></p>
+            </div>
+            <div>
+                <a href="user-history.html" class="btn btn-light" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">View History</a>
+                <a href="withdraw.html" class="btn btn-accent" style="margin-left: 10px;">Withdraw</a>
+            </div>
+        </div>
+        
+        <div id="current-investments">
+            <!-- Current investments will be populated by JavaScript -->
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="products.html" class="btn">Explore More Investments</a>
+        </div>
+    </div>
+</div>
+
+<!-- Add this script to home.html -->
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PrimeInvest</h3>
+                    <p>Your trusted partner for secure and profitable investment opportunities in sustainable resources.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="signin.html">Sign In</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Investment Plans</h3>
+                    <ul>
+                        <li><a href="sales-funnel.html?plan=1">1 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=2">2 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=3">3 Month Plan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Investment Street, Finance City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@primeinvest.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PrimeInvest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Customer Care Icon -->
+    <div class="customer-care" onclick="window.location.href='mailto:felixopemipo@gmail.com'">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

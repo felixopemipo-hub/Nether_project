@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History - PrimeInvest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                PrimeInvest
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="auth-links">
+                        <!-- Will be populated by JavaScript -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-container">
+        <div class="container">
+            <h1 class="section-title">Transaction History</h1>
+            
+            <div class="balance-summary" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: center;">
+                <h3>Account Balance</h3>
+                <p style="font-size: 32px; font-weight: bold; margin: 10px 0;">$<span id="user-balance">0.00</span></p>
+                <a href="withdraw.html" class="btn btn-accent">Withdraw Funds</a>
+            </div>
+            
+            <div class="transaction-tabs" style="margin-bottom: 30px;">
+                <div style="display: flex; border-bottom: 1px solid #ddd;">
+                    <button class="tab-button active" data-tab="investments">Investments</button>
+                    <button class="tab-button" data-tab="withdrawals">Withdrawals</button>
+                    <button class="tab-button" data-tab="funding">Funding</button>
+                </div>
+            </div>
+            
+            <!-- Investments Tab -->
+            <div id="investments-tab" class="tab-content active">
+                <h3>Investment History</h3>
+                <div class="transaction-list" id="investment-list">
+                    <!-- Investments will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Withdrawals Tab -->
+            <div id="withdrawals-tab" class="tab-content">
+                <h3>Withdrawal History</h3>
+                <div class="transaction-list" id="withdrawal-list">
+                    <!-- Withdrawals will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Funding Tab -->
+            <div id="funding-tab" class="tab-content">
+                <h3>Funding History</h3>
+                <div class="transaction-list" id="funding-list">
+                    <!-- Funding will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="home.html" class="btn btn-secondary">Back to Dashboard</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PrimeInvest</h3>
+                    <p>Your trusted partner for secure and profitable investment opportunities in sustainable resources.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="signin.html">Sign In</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Investment Plans</h3>
+                    <ul>
+                        <li><a href="sales-funnel.html?plan=1">1 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=2">2 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=3">3 Month Plan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Investment Street, Finance City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@primeinvest.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PrimeInvest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Customer Care Icon -->
+    <div class="customer-care" onclick="window.location.href='mailto:felixopemipo@gmail.com'">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to current button and content
+                    this.classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Load user transaction history
+            loadUserHistory();
+        });
+        
+        function loadUserHistory() {
+            const currentUser = userStorage.getCurrentUser();
+            if (!currentUser) {
+                window.location.href = 'signin.html';
+                return;
+            }
+            
+            // Update balance
+            const userBalance = userStorage.getUserBalance(currentUser.email);
+            document.getElementById('user-balance').textContent = userBalance.toFixed(2);
+            
+            // Load investments
+            const investments = userStorage.getUserInvestments(currentUser.email);
+            const investmentList = document.getElementById('investment-list');
+            
+            if (investments.length === 0) {
+                investmentList.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">No investments found.</p>';
+            } else {
+                investmentList.innerHTML = '';
+                investments.forEach(investment => {
+                    const product = products[investment.product];
+                    const plan = plans[investment.plan];
+                    const returnAmount = investment.amount * (plan.return / 100);
+                    const totalAmount = parseFloat(investment.amount) + returnAmount;
+                    
+                    const investmentItem = document.createElement('div');
+                    investmentItem.className = 'transaction-item';
+                    investmentItem.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee;">
+                            <div>
+                                <h4>${product.name} - ${plan.name} Plan</h4>
+                                <p>Amount: $${parseFloat(investment.amount).toFixed(2)} | Expected Return: $${returnAmount.toFixed(2)}</p>
+                                <p style="color: #666; font-size: 14px;">Date: ${new Date(investment.date).toLocaleDateString()} | ID: ${investment.confirmation}</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <p style="font-weight: bold; color: var(--success);">+$${totalAmount.toFixed(2)}</p>
+                                <p style="color: #666; font-size: 14px;">Matures: ${getMaturityDate(investment.date, plan.name)}</p>
+                            </div>
+                        </div>
+                    `;
+                    investmentList.appendChild(investmentItem);
+                });
+            }
+            
+            // Load withdrawals
+            const withdrawals = userStorage.getUserWithdrawals(currentUser.email);
+            const withdrawalList = document.getElementById('withdrawal-list');
+            
+            if (withdrawals.length === 0) {
+                withdrawalList.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">No withdrawals found.</p>';
+            } else {
+                withdrawalList.innerHTML = '';
+                withdrawals.forEach(withdrawal => {
+                    const withdrawalItem = document.createElement('div');
+                    withdrawalItem.className = 'transaction-item';
+                    withdrawalItem.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee;">
+                            <div>
+                                <h4>Withdrawal to ${withdrawal.bankName} (${withdrawal.accountNumber})</h4>
+                                <p>Account Holder: ${withdrawal.accountName}</p>
+                                <p style="color: #666; font-size: 14px;">Date: ${new Date(withdrawal.date).toLocaleDateString()} | ID: ${withdrawal.id}</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <p style="font-weight: bold; color: var(--danger);">-$${parseFloat(withdrawal.amount).toFixed(2)}</p>
+                                <p style="color: #666; font-size: 14px;">Status: ${withdrawal.status}</p>
+                            </div>
+                        </div>
+                    `;
+                    withdrawalList.appendChild(withdrawalItem);
+                });
+            }
+            
+            // Load funding
+            const funding = userStorage.getUserFunding(currentUser.email);
+            const fundingList = document.getElementById('funding-list');
+            
+            if (funding.length === 0) {
+                fundingList.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">No funding transactions found.</p>';
+            } else {
+                fundingList.innerHTML = '';
+                funding.forEach(fund => {
+                    const fundingItem = document.createElement('div');
+                    fundingItem.className = 'transaction-item';
+                    fundingItem.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee;">
+                            <div>
+                                <h4>Account Funding</h4>
+                                <p>Method: ${fund.method}</p>
+                                <p style="color: #666; font-size: 14px;">Date: ${new Date(fund.date).toLocaleDateString()} | ID: ${fund.id}</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <p style="font-weight: bold; color: var(--success);">+$${parseFloat(fund.amount).toFixed(2)}</p>
+                                <p style="color: #666; font-size: 14px;">Status: Completed</p>
+                            </div>
+                        </div>
+                    `;
+                    fundingList.appendChild(fundingItem);
+                });
+            }
+        }
+        
+        function getMaturityDate(investmentDate, planName) {
+            const date = new Date(investmentDate);
+            let months = 1;
+            
+            if (planName.includes('2 Month')) months = 2;
+            if (planName.includes('3 Month')) months = 3;
+            
+            date.setMonth(date.getMonth() + months);
+            return date.toLocaleDateString();
+        }
+    </script>
+</body>
+</html>

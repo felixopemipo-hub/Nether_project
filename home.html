@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PrimeInvest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                PrimeInvest
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="auth-links">
+                        <!-- Will be populated by JavaScript -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-container">
+        <div class="container">
+            <h1 class="section-title">Welcome to Your Investment Dashboard</h1>
+            
+            <div class="ad-frame">
+                <div class="container ad-content">
+                    <h2>Special Offer: 5% Bonus on New Investments!</h2>
+                    <p>Limited time offer for all new investments. Don't miss this opportunity to maximize your returns.</p>
+                    <a href="products.html" class="btn">Explore Investments</a>
+                </div>
+            </div>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Gold Mining</h3>
+                        <p>Stable returns from proven gold reserves with sustainable extraction methods.</p>
+                        <a href="product-detail.html?product=gold" class="btn">Invest Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Coal Mining</h3>
+                        <p>Strategic investments with focus on efficiency and environmental responsibility.</p>
+                        <a href="product-detail.html?product=coal" class="btn">Invest Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Biogas Production</h3>
+                        <p>Renewable energy investments with positive environmental impact.</p>
+                        <a href="product-detail.html?product=biogas" class="btn">Invest Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials">
+                <div class="container">
+                    <h2 class="section-title">Recent Investor Success Stories</h2>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "My investment in gold mining has yielded a 22% return in just 3 months. The process was seamless and the support team was always available to answer my questions."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Robert Wilson</h4>
+                                    <p>Gold Mining Investor</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "I appreciate how PrimeInvest balances profitability with environmental responsibility. My biogas investment is performing well and I feel good about supporting clean energy."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Emily Davis</h4>
+                                    <p>Biogas Investor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PrimeInvest</h3>
+                    <p>Your trusted partner for secure and profitable investment opportunities in sustainable resources.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="signin.html">Sign In</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Investment Plans</h3>
+                    <ul>
+                        <li><a href="sales-funnel.html?plan=1">1 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=2">2 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=3">3 Month Plan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Investment Street, Finance City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@primeinvest.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PrimeInvest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Customer Care Icon -->
+    <div class="customer-care" onclick="window.location.href='mailto:felixopemipo@gmail.com'">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

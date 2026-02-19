@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Investment - PrimeInvest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                PrimeInvest
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="auth-links">
+                        <!-- Will be populated by JavaScript -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-container">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section-title">Select Your Investment</h2>
+                <p style="text-align: center; margin-bottom: 30px;">
+                    Choose an investment product to continue with your <span class="plan-name">2 Month Plan</span>
+                </p>
+                
+                <div class="product-grid" style="grid-template-columns: 1fr; gap: 20px;">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3>Gold Mining</h3>
+                            <p>Invest in our carefully selected gold mining operations with proven reserves and sustainable extraction methods.</p>
+                            <div class="plan-details">
+                                <p><strong>Plan:</strong> <span class="plan-name">2 Month Plan</span></p>
+                                <p><strong>Return:</strong> <span class="plan-return">18%</span></p>
+                                <p><strong>Minimum Investment:</strong> $<span class="min-investment">1000</span></p>
+                            </div>
+                            <a href="purchase.html?product=gold" class="btn" style="width: 100%;">Select Gold Mining</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3>Coal Mining</h3>
+                            <p>Strategic investments in coal mining with focus on efficiency and environmental responsibility.</p>
+                            <div class="plan-details">
+                                <p><strong>Plan:</strong> <span class="plan-name">2 Month Plan</span></p>
+                                <p><strong>Return:</strong> <span class="plan-return">18%</span></p>
+                                <p><strong>Minimum Investment:</strong> $<span class="min-investment">1000</span></p>
+                            </div>
+                            <a href="purchase.html?product=coal" class="btn" style="width: 100%;">Select Coal Mining</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3>Biogas Production</h3>
+                            <p>Support renewable energy through investments in biogas production from organic waste materials.</p>
+                            <div class="plan-details">
+                                <p><strong>Plan:</strong> <span class="plan-name">2 Month Plan</span></p>
+                                <p><strong>Return:</strong> <span class="plan-return">18%</span></p>
+                                <p><strong>Minimum Investment:</strong> $<span class="min-investment">1000</span></p>
+                            </div>
+                            <a href="purchase.html?product=biogas" class="btn" style="width: 100%;">Select Biogas Production</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="products.html" class="btn btn-secondary">Back to Products</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PrimeInvest</h3>
+                    <p>Your trusted partner for secure and profitable investment opportunities in sustainable resources.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="signin.html">Sign In</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Investment Plans</h3>
+                    <ul>
+                        <li><a href="sales-funnel.html?plan=1">1 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=2">2 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=3">3 Month Plan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Investment Street, Finance City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@primeinvest.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PrimeInvest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Customer Care Icon -->
+    <div class="customer-care" onclick="window.location.href='mailto:felixopemipo@gmail.com'">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

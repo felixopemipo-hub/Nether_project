@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Confirmation - PrimeInvest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                PrimeInvest
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="auth-links">
+                        <!-- Will be populated by JavaScript -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-container">
+        <div class="container">
+            <div class="confirmation-box">
+                <div class="confirmation-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Investment Confirmed!</h2>
+                <p>Thank you for your investment. Your transaction has been successfully processed.</p>
+                
+                <div class="confirmation-details" style="text-align: left; background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 30px 0;">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Investment Details</h3>
+                    <p><strong>Confirmation Number:</strong> <span class="confirmation-number">INV-584739</span></p>
+                    <p><strong>Product:</strong> <span class="confirmation-product">Gold Mining</span></p>
+                    <p><strong>Plan:</strong> <span class="confirmation-plan">2 Month Plan</span></p>
+                    <p><strong>Investment Amount:</strong> <span class="confirmation-amount">$1,000.00</span></p>
+                    <p><strong>Expected Return:</strong> <span class="confirmation-return">$180.00</span></p>
+                    <p><strong>Date:</strong> <span id="confirmation-date"></span></p>
+                </div>
+                
+                <p>You will receive a confirmation email shortly with all the details of your investment.</p>
+                <p>Our team will be in touch within 24 hours to provide you with additional information and next steps.</p>
+                
+                <div style="margin-top: 30px;">
+                    <a href="home.html" class="btn btn-accent">Go to Dashboard</a>
+                    <a href="products.html" class="btn" style="margin-left: 15px;">Make Another Investment</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PrimeInvest</h3>
+                    <p>Your trusted partner for secure and profitable investment opportunities in sustainable resources.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="signin.html">Sign In</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Investment Plans</h3>
+                    <ul>
+                        <li><a href="sales-funnel.html?plan=1">1 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=2">2 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=3">3 Month Plan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Investment Street, Finance City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@primeinvest.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PrimeInvest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Customer Care Icon -->
+    <div class="customer-care" onclick="window.location.href='mailto:felixopemipo@gmail.com'">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

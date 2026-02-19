@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Purchase - PrimeInvest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                PrimeInvest
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="auth-links">
+                        <!-- Will be populated by JavaScript -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-container">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section-title">Complete Your Investment</h2>
+                
+                <div class="investment-summary" style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+                    <h3>Investment Summary</h3>
+                    <p><strong>Product:</strong> <span class="purchase-product">Gold Mining</span></p>
+                    <p><strong>Plan:</strong> <span class="purchase-plan">2 Month Plan</span></p>
+                    <p><strong>Expected Return:</strong> <span class="purchase-return">18%</span></p>
+                </div>
+                
+                <form class="purchase-form">
+                    <div class="form-group">
+                        <label for="investment-amount">Investment Amount ($)</label>
+                        <input type="number" id="investment-amount" name="investment-amount" class="form-control" required>
+                        <small>Minimum investment: $<span id="min-amount">1000</span></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="payment-method">Payment Method</label>
+                        <select id="payment-method" name="payment-method" class="form-control" required>
+                            <option value="">Select Payment Method</option>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="debit-card">Debit Card</option>
+                            <option value="bank-transfer">Bank Transfer</option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" name="card-number" class="form-control" placeholder="1234 5678 9012 3456">
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="expiry-date">Expiry Date</label>
+                            <input type="text" id="expiry-date" name="expiry-date" class="form-control" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" class="form-control" placeholder="123">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardholder-name">Cardholder Name</label>
+                        <input type="text" id="cardholder-name" name="cardholder-name" class="form-control">
+                    </div>
+                    
+                    <div class="return-calculation" style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                        <h4>Estimated Return</h4>
+                        <p>Your estimated return after the investment period: <strong>$<span class="estimated-return">180.00</span></strong></p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <input type="checkbox" id="terms" name="terms" required style="margin-right: 10px;">
+                            <label for="terms" style="margin-bottom: 0;">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent" style="width: 100%;">Complete Investment</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PrimeInvest</h3>
+                    <p>Your trusted partner for secure and profitable investment opportunities in sustainable resources.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="signin.html">Sign In</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Investment Plans</h3>
+                    <ul>
+                        <li><a href="sales-funnel.html?plan=1">1 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=2">2 Month Plan</a></li>
+                        <li><a href="sales-funnel.html?plan=3">3 Month Plan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Investment Street, Finance City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@primeinvest.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PrimeInvest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Customer Care Icon -->
+    <div class="customer-care" onclick="window.location.href='mailto:felixopemipo@gmail.com'">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
